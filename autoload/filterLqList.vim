@@ -23,3 +23,8 @@ function! filterLqList#ReloadList() abort
     endif
 endfunction
 
+function! filterLqList#HandleDCommand() abort
+    let g:filter_lq_list_changed = 1
+    set modifiable
+    return 'd' 
+endfunction
