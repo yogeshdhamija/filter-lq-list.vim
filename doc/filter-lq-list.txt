@@ -1,0 +1,7 @@
+*filter-lq-list.txt*
+
+Author: Yogesh Dhamija <yogeshdhamija@outlook.com>
+
+This plugin allows the |location-list| and the |quickfix| list to be filtered. 
+You'll be able to delete lines there using `dd` or `dj` or `Vd` or similar,
+and it'll remove those lines from the list.
