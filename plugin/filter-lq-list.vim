@@ -11,6 +11,5 @@ augroup FilterLqList
     autocmd!
     autocmd FileType qf nnoremap <buffer> d :set modifiable<CR>:let g:filter_lq_list_changed = 1<CR>d
     autocmd FileType qf xnoremap <buffer> d <Esc>:set modifiable<CR>:let g:filter_lq_list_changed = 1<CR>gvd
-    autocmd FileType qf cnoreabbrev <expr> <buffer> d filterLqList#HandleDCommand()
     autocmd TextChanged * call filterLqList#ReloadList()
 augroup END
