@@ -9,7 +9,7 @@ let g:loaded_filter_lq_list = 1
 
 augroup FilterLqList
     autocmd!
-    autocmd FileType qf nnoremap <buffer> d :set modifiable<CR>:let g:filter_lq_list_changed = 1<CR>d
-    autocmd FileType qf xnoremap <buffer> d <Esc>:set modifiable<CR>:let g:filter_lq_list_changed = 1<CR>gvd
+    autocmd FileType qf nnoremap <buffer> d :setlocal errorformat=%f\|%l\ col\ %c\|%m<CR>:set modifiable<CR>:let g:filter_lq_list_changed = 1<CR>d
+    autocmd FileType qf xnoremap <buffer> d <Esc>:setlocal errorformat=%f\|%l\ col\ %c\|%m<CR>:set modifiable<CR>:let g:filter_lq_list_changed = 1<CR>gvd
     autocmd TextChanged * call filterLqList#ReloadList()
 augroup END
