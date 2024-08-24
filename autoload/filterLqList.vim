@@ -9,13 +9,17 @@ let g:autoloaded_filter_lq_list = 1
 function! filterLqList#ReloadList() abort
     if(exists("g:filter_lq_list_changed") && g:filter_lq_list_changed)
         if(getwininfo(win_getid())[0]['loclist']) " is loclist
-            setlocal errorformat=%f\|%l\ col\ %c\|%m
+            if has('nvim')
+                setlocal errorformat=%f\|%l\ col\ %c\|%m
+            endif
             lgetbuffer 
             redraw!
             set nomodified
             echo "Executed :set modifiable, deleted, then :lgetbuffer."
         else " is quickfix
-            setlocal errorformat=%f\|%l\ col\ %c\|%m
+            if has('nvim')
+                setlocal errorformat=%f\|%l\ col\ %c\|%m
+            endif
             cgetbuffer
             redraw!
             set nomodified
