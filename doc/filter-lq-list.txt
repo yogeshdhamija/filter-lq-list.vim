@@ -9,7 +9,16 @@ and it'll remove those lines from the list.
 `d` is a real |operator| here, so counts and motions work as they do anywhere
 else: `dd`, `5dd`, `d5j`, `dG`, `dap`, `Vjjjd`.
 
+`u` and `CTRL-R` undo and redo your filtering, within the window.
+
 The entries themselves are never re-parsed from the text on screen, so they
 survive filtering intact -- the list stays navigable, and 'quickfixtextfunc'
-is left alone. The list is filtered in place; use |:colder| to reach lists
-from before it was built, not to undo a filter.
+is left alone.
+
+The list is filtered in place, so the quickfix stack keeps holding your actual
+searches: |:colder| still reaches the list you had before this one, rather than
+a filter step. Anything that rebuilds the list (a new |:grep|, an LSP refresh)
+starts undo history over.
+
+Editing the buffer directly is not supported -- `:g/foo/d` will fail with |E21|,
+as the buffer is not 'modifiable'. Use `dd`, `Vd` or a motion instead.
