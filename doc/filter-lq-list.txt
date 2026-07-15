@@ -2,6 +2,14 @@
 
 Author: Yogesh Dhamija <yogeshdhamija@outlook.com>
 
-This plugin allows the |location-list| and the |quickfix| list to be filtered. 
+This plugin allows the |location-list| and the |quickfix| list to be filtered.
 You'll be able to delete lines there using `dd` or `dj` or `Vd` or similar,
 and it'll remove those lines from the list.
+
+`d` is a real |operator| here, so counts and motions work as they do anywhere
+else: `dd`, `5dd`, `d5j`, `dG`, `dap`, `Vjjjd`.
+
+The entries themselves are never re-parsed from the text on screen, so they
+survive filtering intact -- the list stays navigable, and 'quickfixtextfunc'
+is left alone. The list is filtered in place; use |:colder| to reach lists
+from before it was built, not to undo a filter.
